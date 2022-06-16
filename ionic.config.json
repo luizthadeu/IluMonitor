@@ -1,0 +1,7 @@
+{
+  "name": "IluMonitor",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
