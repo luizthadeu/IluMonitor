@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Edit Schema</ion-title>
+    <ion-buttons slot="end">
+      <ion-button id="closeButton" (click)="closeModal(null)" title="Close">
+        <ion-icon slot="icon-only" name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid class="ion-no-padding">
+    <ion-row class="ion-no-padding">
+      <ion-col *ngFor="let color of colors; let i=index">
+        <ion-input class="ion-no-padding" type="color" (ionBlur)="changeColor($event, i)" [value]="color"></ion-input>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-button expand="full" fill="outline" (click)="add()" *ngIf="this.colors.length < 10">+</ion-button>
+      </ion-col>
+      <ion-col>
+        <ion-button expand="full" fill="outline" (click)="remove()" *ngIf="this.colors.length > 2">-</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
+<ion-footer>
+  <ion-button expand="full" fill="outline" (click)="closeModal(colors)">Save</ion-button>
+</ion-footer>

@@ -4,11 +4,11 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'folder/Hello%20Everyone',
+    redirectTo: '/hello%20everyone',
     pathMatch: 'full'
   },
   {
-    path: 'folder/:id',
+    path: ':id',
     loadChildren: () => import('./folder/folder.module').then( m => m.FolderPageModule)
   }
 ];
