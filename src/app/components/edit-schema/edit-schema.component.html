@@ -11,17 +11,21 @@
 
 <ion-content>
   <ion-grid class="ion-no-padding">
-    <ion-row class="ion-no-padding">
-      <ion-col *ngFor="let color of colors; let i=index">
-        <ion-input class="ion-no-padding" type="color" (ionBlur)="changeColor($event, i)" [value]="color"></ion-input>
+    <ion-row>
+      <ion-col class="ion-text-center">
+        <ion-button fill="outline" (click)="add()" *ngIf="this.colors.length < 10" color="success" >
+          <ion-icon slot="icon-only" name="add-circle"></ion-icon>
+        </ion-button>
+      </ion-col>
+      <ion-col class="ion-text-center">
+        <ion-button fill="outline" (click)="remove()" *ngIf="this.colors.length > 2" color="danger">
+          <ion-icon slot="icon-only"  name="remove-circle"></ion-icon>
+        </ion-button>
       </ion-col>
     </ion-row>
-    <ion-row>
-      <ion-col>
-        <ion-button expand="full" fill="outline" (click)="add()" *ngIf="this.colors.length < 10">+</ion-button>
-      </ion-col>
-      <ion-col>
-        <ion-button expand="full" fill="outline" (click)="remove()" *ngIf="this.colors.length > 2">-</ion-button>
+    <ion-row class="ion-no-padding" *ngIf="!loading">
+      <ion-col *ngFor="let color of colors; let i=index">
+        <ion-input class="ion-no-padding" id="color_{{i}}" type="color" (ionBlur)="changeColor($event, i)" [value]="color"></ion-input>
       </ion-col>
     </ion-row>
   </ion-grid>

@@ -4,7 +4,7 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: '/hello%20everyone',
+    redirectTo: '/%23FF0000,%23FF00FF,%230000FF',
     pathMatch: 'full'
   },
   {

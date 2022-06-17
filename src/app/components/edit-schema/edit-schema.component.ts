@@ -9,12 +9,12 @@ import { ModalController } from '@ionic/angular';
 export class EditSchemaComponent implements OnInit {
   @Input() colors = [];
 
-  public defaultColors = ['FF0000','00FF00','0000FF'];
+  loading = false;
 
   constructor(private modalCtrl: ModalController,) { }
 
   ngOnInit() {
-    console.log(this.colors);
+
   }
 
   closeModal(output: any) {
@@ -23,12 +23,18 @@ export class EditSchemaComponent implements OnInit {
 
   changeColor(ev: any, index: number){
     if(ev.target){
-      this.colors[index] = ev.target.value;
+      this.loading = true;
+      setTimeout(()=>{
+        this.colors[index] = ev.target.value;
+        this.loading = false;
+      }, 100);
     }
   }
 
   add(){
-    this.colors.push(this.defaultColors[this.colors.length % 3]);
+    const defaultColors = ['#FF0000','#00FF00','#0000FF'];
+    const color = `${defaultColors[this.colors.length % 3]}`;
+    this.colors.push(color);
   }
 
   remove(){
