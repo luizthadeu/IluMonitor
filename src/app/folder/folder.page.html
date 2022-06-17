@@ -1,7 +1,8 @@
 <ion-content [fullscreen]="true">
   <ion-grid class="ion-no-padding">
     <ion-row class="ion-no-padding">
-      <ion-col class="full-height" *ngFor="let color of colors; let i=index" [ngStyle]="{'background-color': color}" (click)="changeSchema()">
+      <ion-col class="full-height ion-text-center" *ngFor="let color of colors; let i=index" [ngStyle]="{'background-color': color, 'color': color}" (click)="changeSchema()">
+        <span class="invert-color">{{color}}</span>
       </ion-col>
     </ion-row>
   </ion-grid>

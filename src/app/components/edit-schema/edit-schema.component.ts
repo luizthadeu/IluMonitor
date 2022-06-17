@@ -32,8 +32,7 @@ export class EditSchemaComponent implements OnInit {
   }
 
   add(){
-    const defaultColors = ['#FF0000','#00FF00','#0000FF'];
-    const color = `${defaultColors[this.colors.length % 3]}`;
+    const color = `${this.colors[this.colors.length-1]}`;
     this.colors.push(color);
   }
 

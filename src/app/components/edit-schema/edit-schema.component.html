@@ -28,6 +28,11 @@
         <ion-input class="ion-no-padding" id="color_{{i}}" type="color" (ionBlur)="changeColor($event, i)" [value]="color"></ion-input>
       </ion-col>
     </ion-row>
+    <ion-row class="ion-no-padding" class="ion-text-center" *ngIf="!loading">
+      <ion-col *ngFor="let color of colors; let i=index" [ngStyle]="{'color': color}">
+        {{color}}
+      </ion-col>
+    </ion-row>
   </ion-grid>
 </ion-content>
 <ion-footer>

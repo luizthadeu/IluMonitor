@@ -1,18 +1,16 @@
-* {
-  --color: #FFFFFF;
-}
 
 .full-height
 {
   min-height: 100vh;
+  cursor: pointer;
 }
 
-.full-size
-{
-  min-height: 100vh;
-  width: 100%;
-}
 
-.invertColor {
+.invert-color {
+  position: absolute;
+  bottom: 2px;
   filter: invert(1);
+  font-weight: 900;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-size: large;
 }

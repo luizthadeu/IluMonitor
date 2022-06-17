@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute , Router } from '@angular/router';
 import { ModalController } from '@ionic/angular';
 import { EditSchemaComponent } from '../components/edit-schema/edit-schema.component';
 
@@ -9,17 +9,19 @@ import { EditSchemaComponent } from '../components/edit-schema/edit-schema.compo
   styleUrls: ['./folder.page.scss'],
 })
 export class FolderPage implements OnInit {
-  public colors = ['FF0000','0000FF'];
+  public colors = ['#E70000','#CD19FF','#005AFB'];
 
   changeSchemaModal = null;
 
   constructor(
     private activatedRoute: ActivatedRoute,
     public modalController: ModalController,
+    public router: Router,
   ) { }
 
   ngOnInit() {
     const inputColors = (this.activatedRoute.snapshot.paramMap.get('id') || '').toUpperCase();
+    console.log(inputColors);
     if(inputColors){
       this.colors = inputColors.split(',');
     }
@@ -28,6 +30,7 @@ export class FolderPage implements OnInit {
   async changeSchema() {
     this.changeSchemaModal = await this.modalController.create({
       component: EditSchemaComponent,
+      cssClass: 'full-opty-popover',
       componentProps: {
         colors: [...this.colors],
       }
@@ -39,6 +42,8 @@ export class FolderPage implements OnInit {
       const { data } = await this.changeSchemaModal.onDidDismiss();
       if (data) {
         this.colors = [...data];
+        const rota = this.colors.join(',');
+        this.router.navigate(['/'+rota]);
       }
     }
     return;
