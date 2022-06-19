@@ -31,13 +31,13 @@ export class EditSchemaComponent implements OnInit {
     }
   }
 
-  add(){
-    const color = `${this.colors[this.colors.length-1]}`;
-    this.colors.push(color);
+  add(index: number){
+    const color = `${this.colors[index]}`;
+    this.colors.splice(index, 0, [color]);
   }
 
-  remove(){
-    this.colors.pop();
+  remove(index: number){
+    this.colors.splice(index, 1);
   }
 
 }

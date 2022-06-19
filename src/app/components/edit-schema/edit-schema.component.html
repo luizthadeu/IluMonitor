@@ -11,21 +11,12 @@
 
 <ion-content>
   <ion-grid class="ion-no-padding">
-    <ion-row>
-      <ion-col class="ion-text-center">
-        <ion-button fill="outline" (click)="add()" *ngIf="this.colors.length < 10" color="success" >
-          <ion-icon slot="icon-only" name="add-circle"></ion-icon>
-        </ion-button>
-      </ion-col>
-      <ion-col class="ion-text-center">
-        <ion-button fill="outline" (click)="remove()" *ngIf="this.colors.length > 2" color="danger">
-          <ion-icon slot="icon-only"  name="remove-circle"></ion-icon>
-        </ion-button>
-      </ion-col>
-    </ion-row>
+
     <ion-row class="ion-no-padding" *ngIf="!loading">
       <ion-col *ngFor="let color of colors; let i=index">
         <ion-input class="ion-no-padding" id="color_{{i}}" type="color" (ionBlur)="changeColor($event, i)" [value]="color"></ion-input>
+          <ion-icon class="add-buttom control-buttom" title="Add" name="add-circle" id="add" (click)="add(i)" *ngIf="this.colors.length < 10" [ngStyle]="{'color': color}"></ion-icon>
+          <ion-icon class="remove-buttom control-buttom" title="Delete" name="remove-circle" id="delete"  *ngIf="this.colors.length > 2" (click)="remove(i)"  [ngStyle]="{'color': color}"></ion-icon>
       </ion-col>
     </ion-row>
     <ion-row class="ion-no-padding" class="ion-text-center" *ngIf="!loading">
@@ -36,5 +27,5 @@
   </ion-grid>
 </ion-content>
 <ion-footer>
-  <ion-button expand="full" fill="outline" (click)="closeModal(colors)">Save</ion-button>
+  <ion-button expand="full" fill="outline" (click)="closeModal(colors)" color="success">Save</ion-button>
 </ion-footer>
