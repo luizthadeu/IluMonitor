@@ -1,10 +1,14 @@
-<ion-content [fullscreen]="true">
-  <ion-grid class="ion-no-padding">
+<ion-content [fullscreen]="true" class="content-body" style="--start-color:{{colors[0]}}; --end-color:{{colors[colors.length-1]}}">
+  <div class="content-div" (click)="changeSchema()">
+
+  </div>
+  <ion-grid class="ion-no-padding" *ngIf="!showBackground">
     <ion-row class="ion-no-padding ion-text-center" >
-      <ion-col class="full-height ion-text-center" *ngFor="let color of colors; let i=index" [ngStyle]="{'background-color': color, 'color': color}" (click)="changeSchema()">
-        <span class="invert-color">{{color}}</span>
-      </ion-col>
+      <ion-col class="full-height ion-text-center" *ngFor="let color of colors; let i=index" [ngStyle]="{'background-color': color, 'color': color}"></ion-col>
     </ion-row>
   </ion-grid>
+  <div class="toggle"> 
+    <ion-toggle [(ngModel)]="showBackground"></ion-toggle>Fluid
+  </div>
 </ion-content>
  

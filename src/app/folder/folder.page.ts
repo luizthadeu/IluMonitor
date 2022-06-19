@@ -12,6 +12,7 @@ export class FolderPage implements OnInit {
   public colors = ['#E70000','#CD19FF','#005AFB'];
 
   changeSchemaModal = null;
+  showBackground = false;
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -21,6 +22,8 @@ export class FolderPage implements OnInit {
 
   ngOnInit() {
     const inputColors = (this.activatedRoute.snapshot.paramMap.get('id') || '').toUpperCase();
+    this.showBackground = (this.activatedRoute.snapshot.paramMap.get('type') || '').toUpperCase() === 'FLUID';
+
     console.log(inputColors);
     if(inputColors){
       this.colors = inputColors.split(',');
@@ -41,9 +44,10 @@ export class FolderPage implements OnInit {
 
       const { data } = await this.changeSchemaModal.onDidDismiss();
       if (data) {
+        const type = (this.showBackground) ? 'fluid' : '';
         this.colors = [...data];
         const rota = this.colors.join(',');
-        this.router.navigate(['/'+rota]);
+        this.router.navigate(['/'+rota+'/'+type]);
       }
     }
     return;
